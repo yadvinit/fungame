@@ -1,125 +1,108 @@
 "use client";
 
 import React, { useState } from "react";
-import { Coffee, Gift, Heart, HelpCircle, Utensils } from "lucide-react";
+import { Coffee, Heart, AlertTriangle } from "lucide-react";
 
 interface VinitTreatProps {
   onComplete: (treat: string) => void;
 }
 
-const TREAT_OPTIONS = [
-  { text: "🍟 A fresh packet of Peri Peri Fries!", icon: "🍟" },
-  { text: "🍩 Creamy chocolate donuts", icon: "🍩" },
-  { text: "☕ A cold coffee / iced latte shake", icon: "☕" },
-  { text: "🍪 Premium chocolate chip cookies", icon: "🍪" },
-  { text: "🎁 A surprise gourmet snack of his choice!", icon: "🎁" },
-  { text: "✍️ Write a custom snack...", icon: "✍️" }
-];
-
 export default function VinitTreat({ onComplete }: VinitTreatProps) {
-  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
-  const [customTreat, setCustomTreat] = useState("");
-  const [error, setError] = useState("");
+  const [noPosition, setNoPosition] = useState<{ top: string; left: string; position: "relative" | "absolute" }>({
+    top: "0px",
+    left: "0px",
+    position: "relative"
+  });
+  const [hasHovered, setHasHovered] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (selectedIdx === null) {
-      setError("Please select a treat option!");
-      return;
-    }
+  const handleNoHover = () => {
+    // Move the button to a random position inside the container boundaries
+    const randomTop = Math.floor(Math.random() * 65 + 15) + "%";
+    const randomLeft = Math.floor(Math.random() * 65 + 15) + "%";
+    setNoPosition({
+      top: randomTop,
+      left: randomLeft,
+      position: "absolute"
+    });
+    setHasHovered(true);
+  };
 
-    const chosenOption = TREAT_OPTIONS[selectedIdx];
-    let finalTreat = chosenOption.text;
-
-    if (chosenOption.text.includes("Write a custom snack")) {
-      if (!customTreat.trim()) {
-        setError("Please type in what custom snack you'll bring!");
-        return;
-      }
-      finalTreat = `✍️ Custom: ${customTreat.trim()}`;
-    }
-
-    setError("");
-    onComplete(finalTreat);
+  const handleYes = () => {
+    onComplete("☕ Cold Coffee (With Extra Love & Ice)");
   };
 
   return (
-    <div className="card">
-      <div className="badge badge-spice" style={{ marginBottom: "16px" }}>
-        <Heart size={14} fill="currentColor" /> Spice Partnership Contract
-      </div>
-
-      <h2 style={{ fontSize: "1.8rem", marginBottom: "12px", lineHeight: "1.2" }}>
-        Treat for Vinit! 🤝
-      </h2>
-      <p style={{ color: "var(--color-text-muted)", fontSize: "0.95rem", marginBottom: "24px" }}>
-        Since you cleared the foodie trivia and decided tonight's dinner, what delicious treat are you bringing for Vinit tomorrow to keep the food synergy alive?
-      </p>
-
-      <form onSubmit={handleSubmit}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "20px" }}>
-          {TREAT_OPTIONS.map((option, idx) => {
-            const isSelected = selectedIdx === idx;
-            return (
-              <button
-                key={idx}
-                type="button"
-                style={{
-                  background: isSelected ? "rgba(255, 107, 0, 0.12)" : "rgba(255, 255, 255, 0.03)",
-                  border: isSelected ? "2px solid var(--color-orange)" : "1px solid rgba(255, 255, 255, 0.08)",
-                  borderRadius: "16px",
-                  padding: "16px 12px",
-                  color: isSelected ? "#ffffff" : "var(--color-text-muted)",
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "8px",
-                  textAlign: "center",
-                  fontSize: "0.9rem",
-                  fontWeight: isSelected ? "700" : "500"
-                }}
-                onClick={() => {
-                  setSelectedIdx(idx);
-                  setError("");
-                }}
-              >
-                <span style={{ fontSize: "2rem" }}>{option.icon}</span>
-                <span>{option.text.split("!")[0].split("...")[0]}</span>
-              </button>
-            );
-          })}
+    <div className="card" style={{ textAlign: "center", minHeight: "450px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+      <div>
+        <div className="badge badge-spice" style={{ marginBottom: "16px" }}>
+          <Heart size={14} fill="currentColor" /> Mandatory Sweetness Clause
         </div>
 
-        {selectedIdx !== null && TREAT_OPTIONS[selectedIdx].text.includes("Write a custom snack") && (
-          <div className="input-group" style={{ animation: "float-slow 8s ease-in-out infinite" }}>
-            <label className="input-label" htmlFor="custom-treat-input">What's the custom treat?</label>
-            <input
-              id="custom-treat-input"
-              type="text"
-              className="input-field"
-              placeholder="e.g. A hot samosa or chocolate lava cake"
-              value={customTreat}
-              onChange={(e) => {
-                setCustomTreat(e.target.value);
-                setError("");
-              }}
-            />
-          </div>
-        )}
+        <h2 style={{ fontSize: "1.8rem", marginBottom: "12px", lineHeight: "1.2" }}>
+          A Quick Question for Sanika... 😉
+        </h2>
+        <p style={{ color: "var(--color-text-muted)", fontSize: "0.95rem", marginBottom: "16px" }}>
+          Since you completed the foodie trivia, are you bringing a delicious treat for Vinit tomorrow to brighten his day?
+        </p>
+      </div>
 
-        {error && (
-          <p style={{ color: "var(--color-red)", fontSize: "0.9rem", marginBottom: "16px", fontWeight: "600" }}>
-            ⚠️ {error}
-          </p>
-        )}
-
-        <button type="submit" className="btn btn-primary">
-          Confirm Treat Promise 🔒
+      {/* Action Container with relative positioning for runaway button */}
+      <div 
+        style={{ 
+          position: "relative", 
+          height: "220px", 
+          width: "100%", 
+          background: "rgba(255, 255, 255, 0.02)", 
+          border: "1px dashed rgba(255, 255, 255, 0.08)",
+          borderRadius: "16px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "16px",
+          overflow: "hidden"
+        }}
+      >
+        <button 
+          className="btn btn-primary" 
+          style={{ width: "auto", minWidth: "160px", zIndex: 10 }}
+          onClick={handleYes}
+        >
+          Yes! Cold Coffee ☕
         </button>
-      </form>
+
+        <button
+          className="btn btn-secondary"
+          style={{
+            width: "auto",
+            position: noPosition.position,
+            top: noPosition.position === "absolute" ? noPosition.top : "auto",
+            left: noPosition.position === "absolute" ? noPosition.left : "auto",
+            transform: noPosition.position === "absolute" ? "translate(-50%, -50%)" : "none",
+            transition: "all 0.1s ease-out",
+            zIndex: 20,
+            whiteSpace: "nowrap"
+          }}
+          onMouseEnter={handleNoHover}
+          onClick={handleNoHover} // For mobile taps
+          onTouchStart={handleNoHover} // Direct mobile touch
+        >
+          No, absolutely not! 🙅‍♀️
+        </button>
+      </div>
+
+      {hasHovered && (
+        <p 
+          style={{ 
+            color: "var(--color-orange)", 
+            fontSize: "0.85rem", 
+            fontWeight: "600", 
+            marginTop: "12px",
+            animation: "float-slow 4s ease-in-out infinite"
+          }}
+        >
+          ⚠️ Error 404: The 'No' option is currently out of service. Please select Yes!
+        </p>
+      )}
     </div>
   );
 }

@@ -20,17 +20,17 @@ export default function Home() {
 
   const handleQuizComplete = (allCorrect: boolean) => {
     if (allCorrect) {
-      setStep("WHEEL");
+      setStep("TREAT");
     }
-  };
-
-  const handleWheelComplete = (option: string) => {
-    setDinnerOption(option);
-    setStep("TREAT");
   };
 
   const handleTreatComplete = (treat: string) => {
     setVinitTreat(treat);
+    setStep("WHEEL");
+  };
+
+  const handleWheelComplete = (option: string) => {
+    setDinnerOption(option);
     setStep("SUMMARY");
   };
 
