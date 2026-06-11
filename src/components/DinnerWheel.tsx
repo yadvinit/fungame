@@ -9,13 +9,13 @@ interface DinnerWheelProps {
 }
 
 const DINNER_OPTIONS = [
-  "🍸 Neon Margarita (Tequila Rush)",
-  "🍺 Cold Craft Beer Pint",
-  "🍹 Spicy Chili Martini",
-  "🥃 Double Whiskey Sour",
-  "🧉 Trippy Absinthe Shot",
-  "🍹 Long Island Iced Tea",
-  "☕ Espresso Martini (Work Fuel)",
+  "🍸 Espresso Martini (Cocktail)",
+  "🍹 Virgin Passionfruit Mojito",
+  "🍁 Purple Haze (Weed Strain)",
+  "🍹 Chili Mango Mocktail",
+  "🌿 Sour Diesel (Weed Strain)",
+  "🍷 Red Wine Sangria",
+  "🍃 Blue Dream (Weed Strain)",
   "💧 Plain Water (Khaali Glass)"
 ];
 

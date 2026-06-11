@@ -14,51 +14,51 @@ interface Question {
 const QUIZ_QUESTIONS: Question[] = [
   {
     id: 1,
-    text: "What is Nupur's ultimate fuel to survive a 12-hour work marathon?",
+    text: "Which famous stout brand features a gold harp on its label?",
     options: [
-      "A cup of hot warm water",
-      "Double-shot espresso injected straight into the veins! ☕🔥",
-      "Taking a 2-hour afternoon nap",
-      "Eating a sugar-free oat bar"
+      "Budweiser",
+      "Guinness 🍺",
+      "Corona Extra",
+      "Heineken"
     ],
     correctAnswerIndex: 1,
-    explanation: "Correct! Caffeine is the lifeblood of Nupur's legendary work marathons!"
+    explanation: "Correct! The gold harp has been the official trademark of Guinness since 1862!"
   },
   {
     id: 2,
-    text: "After a long corporate grind, how does Nupur choose to 'decompress' and get high-vibe?",
+    text: "What is the primary alkaloid chemical compound naturally found in tobacco leaves?",
     options: [
-      "Updating spreadsheets for fun",
-      "Sipping a gorgeous, neon-lit cocktail and listening to deep house! 🍸🌀",
-      "Reading corporate policy handbooks",
-      "Going to bed at 9:00 PM sharp"
+      "Caffeine",
+      "Nicotine 🚬",
+      "Morphine",
+      "Taurine"
     ],
     correctAnswerIndex: 1,
-    explanation: "Exactly! Good beats, glowing neon lights, and a cool cocktail are the ultimate way to unwind!"
+    explanation: "Indeed! Nicotine is the naturally occurring stimulant found in tobacco leaves."
   },
   {
     id: 3,
-    text: "What is the secret ingredient that makes a chili cocktail taste absolutely mind-bending?",
+    text: "Which famous sativa-dominant hybrid weed strain is known for its distinct diesel-like fuel aroma?",
     options: [
-      "A splash of white vinegar",
-      "A pinch of fiery ghost pepper syrup and a sugar rim! 🌶️🍹",
-      "Just basic ice cubes",
-      "A celery stalk stir"
+      "White Widow",
+      "Northern Lights",
+      "Sour Diesel 🍁",
+      "Granddaddy Purple"
     ],
-    correctAnswerIndex: 1,
-    explanation: "Perfect! A sweet and spicy kick takes the cocktail experience to a whole new dimension!"
+    correctAnswerIndex: 2,
+    explanation: "Correct! Sour Diesel (sometimes called Sour D) is a fast-acting sativa-dominant strain named after its pungent, diesel-like smell."
   },
   {
     id: 4,
-    text: "If Nupur gets a Slack notification at 11:00 PM on a Friday while holding a drink, what happens?",
+    text: "What is Nupur's ultimate survival code when corporate tasks pile up on Friday night?",
     options: [
-      "She shuts down her laptop, ignores it, and takes a shot! 🥂✨",
-      "She starts writing code immediately",
-      "She schedules a client meeting for Saturday morning",
-      "She sends an email apologizing for the delay"
+      "Close the laptop and order a double shot! 🥃💼",
+      "Write code until sunrise",
+      "Organize email inbox folders",
+      "Call an emergency sync meeting"
     ],
     correctAnswerIndex: 0,
-    explanation: "Spot on! Respect the weekend, shut the laptop, and toast to freedom! 🥂"
+    explanation: "Spot on! Respect the weekend, close the laptop, and toast to freedom! 🥃"
   }
 ];
 

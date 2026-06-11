@@ -13,7 +13,7 @@ interface SummaryCardProps {
 export default function SummaryCard({ dinnerOption, vinitTreat, onRestart }: SummaryCardProps) {
   const [copied, setCopied] = useState(false);
 
-  const shareText = `🌀 *Nupur's High-Vibe Chill & Grind Challenge Completed!* 💼\n\n👤 *Candidate:* Nupur\n👑 *Status:* Certified Workaholic & High-Vibe Queen\n🥤 *Beverage Won:* ${dinnerOption}\n☕ *Tomorrow's Treat for Vinit:* ${vinitTreat}\n\n_Contract locked! Plain water duty awaits Nupur!_ 💧🔐`;
+  const shareText = `🌀 *Nupur's High-Vibe Chill & Grind Challenge Completed!* 💼\n\n👤 *Candidate:* Nupur\n👑 *Status:* Certified Workaholic & High-Vibe Queen\n🥤 *Beverage Won:* ${dinnerOption}\n💀 *Vinit's Fate Tomorrow:* ${vinitTreat}\n\n_Contract locked! Plain water duty awaits Nupur, and Vinit's fate is sealed!_ 💧☠️`;
 
   const handleCopy = async () => {
     try {
@@ -97,7 +97,7 @@ export default function SummaryCard({ dinnerOption, vinitTreat, onRestart }: Sum
         <div className="receipt-divider"></div>
 
         <div className="receipt-row" style={{ flexDirection: "column", gap: "4px" }}>
-          <span className="receipt-label">Tomorrow's Treat for Vinit:</span>
+          <span className="receipt-label">Vinit's Fate Tomorrow:</span>
           <span className="receipt-value" style={{ fontSize: "1.05rem", color: "#ffffff" }}>
             {vinitTreat}
           </span>
@@ -106,7 +106,7 @@ export default function SummaryCard({ dinnerOption, vinitTreat, onRestart }: Sum
         <div className="receipt-divider" style={{ borderStyle: "dashed" }}></div>
 
         <p style={{ fontSize: "0.8rem", color: "var(--color-text-muted)", textAlign: "center", fontStyle: "italic" }}>
-          "By clicking below, Nupur agrees to remain sober with plain water tonight and deliver a delicious cold coffee to Vinit tomorrow."
+          "By clicking below, Nupur agrees to remain sober with plain water tonight and carry out the designated fate for Vinit tomorrow."
         </p>
       </div>
 

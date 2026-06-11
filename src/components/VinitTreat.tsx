@@ -16,7 +16,6 @@ export default function VinitTreat({ onComplete }: VinitTreatProps) {
   const [hasHovered, setHasHovered] = useState(false);
 
   const handleNoHover = () => {
-    // Move the button to a random position inside the container boundaries
     const randomTop = Math.floor(Math.random() * 65 + 15) + "%";
     const randomLeft = Math.floor(Math.random() * 65 + 15) + "%";
     setNoPosition({
@@ -28,21 +27,21 @@ export default function VinitTreat({ onComplete }: VinitTreatProps) {
   };
 
   const handleYes = () => {
-    onComplete("☕ Cold Coffee (With Extra Love & Ice)");
+    onComplete("💀 You want to kill Vinit! (Overload with tasks)");
   };
 
   return (
     <div className="card" style={{ textAlign: "center", minHeight: "450px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
       <div>
         <div className="badge badge-spice" style={{ marginBottom: "16px" }}>
-          <Heart size={14} fill="currentColor" /> Mandatory Sweetness Clause
+          <Heart size={14} fill="currentColor" /> Executive Decision Clause
         </div>
 
         <h2 style={{ fontSize: "1.8rem", marginBottom: "12px", lineHeight: "1.2" }}>
-          A Quick Question for Nupur... 😉
+          Decide Vinit's Fate Tomorrow... 🤔
         </h2>
         <p style={{ color: "var(--color-text-muted)", fontSize: "0.95rem", marginBottom: "16px" }}>
-          Since you completed the trivia, are you bringing a delicious cold coffee for Vinit tomorrow to brighten his work day?
+          Since you passed the High-Vibe trivia, what is Vinit's corporate fate tomorrow? Choose wisely.
         </p>
       </div>
 
@@ -67,7 +66,7 @@ export default function VinitTreat({ onComplete }: VinitTreatProps) {
           style={{ width: "auto", minWidth: "160px", zIndex: 10 }}
           onClick={handleYes}
         >
-          Yes! Cold Coffee ☕
+          You want to kill Vinit! 💀
         </button>
 
         <button
@@ -86,21 +85,21 @@ export default function VinitTreat({ onComplete }: VinitTreatProps) {
           onClick={handleNoHover} // For mobile taps
           onTouchStart={handleNoHover} // Direct mobile touch
         >
-          No, absolutely not! 🙅‍♀️
+          Jaa Jee Le Zindagi! 🕊️
         </button>
       </div>
 
       {hasHovered && (
         <p 
           style={{ 
-            color: "var(--color-orange)", 
+            color: "var(--color-red)", 
             fontSize: "0.85rem", 
             fontWeight: "600", 
             marginTop: "12px",
             animation: "float-slow 4s ease-in-out infinite"
           }}
         >
-          ⚠️ Error 404: The 'No' option is currently out of service. Please select Yes!
+          ⚠️ Access Denied: Vinit is not permitted to live in peace. Select 'You want to kill Vinit! 💀'
         </p>
       )}
     </div>
