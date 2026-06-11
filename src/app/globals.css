@@ -1,0 +1,455 @@
+/* Custom styling for Peri Peri Fries Game */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap');
+
+:root {
+  --color-red: #e2583e;
+  --color-red-hover: #ff6d54;
+  --color-orange: #fbb03b;
+  --color-yellow: #ffc72c;
+  --color-yellow-pale: #fff3c4;
+  --color-bg: #150d0a;
+  --color-bg-light: #211410;
+  --color-card: rgba(33, 20, 16, 0.85);
+  --color-border: rgba(226, 88, 62, 0.25);
+  --color-border-glow: rgba(226, 88, 62, 0.6);
+  --color-text: #fffdfc;
+  --color-text-muted: #d9c5bf;
+  
+  --font-title: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 30px rgba(227, 27, 35, 0.35);
+  --shadow-glow-yellow: 0 0 30px rgba(255, 199, 44, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(227, 27, 35, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(255, 107, 0, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 199, 44, 0.03) 0%, transparent 50%);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+/* Page Layout */
+.app-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* Background floating decorations */
+.background-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floating-item {
+  position: absolute;
+  opacity: 0.15;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+}
+
+.item-1 {
+  top: 10%;
+  left: 5%;
+  animation: float-slow 12s ease-in-out infinite;
+}
+
+.item-2 {
+  top: 15%;
+  right: 8%;
+  animation: float-reverse 15s ease-in-out infinite;
+}
+
+.item-3 {
+  bottom: 15%;
+  left: 8%;
+  animation: float-reverse 10s ease-in-out infinite;
+}
+
+.item-4 {
+  bottom: 10%;
+  right: 5%;
+  animation: float-slow 14s ease-in-out infinite;
+}
+
+/* Glassmorphism Cards */
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: 32px 24px;
+  width: 100%;
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-red), var(--color-orange), var(--color-yellow));
+}
+
+.card:hover {
+  border-color: var(--color-border-glow);
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(227, 27, 35, 0.45);
+}
+
+/* Custom buttons */
+.btn {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 14px 28px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-red) 0%, var(--color-orange) 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(227, 27, 35, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(227, 27, 35, 0.6), 0 0 15px rgba(255, 107, 0, 0.3);
+  background: linear-gradient(135deg, var(--color-red-hover) 0%, #ff8224 100%);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-yellow {
+  background: linear-gradient(135deg, var(--color-yellow) 0%, #ff9e00 100%);
+  color: #0b0706;
+  box-shadow: 0 4px 15px rgba(255, 199, 44, 0.3);
+}
+
+.btn-yellow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 199, 44, 0.5), var(--shadow-glow-yellow);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Quiz option items */
+.option-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px 20px;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.option-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.option-btn.correct {
+  background: rgba(46, 204, 113, 0.15);
+  border-color: rgba(46, 204, 113, 0.6);
+  color: #2ecc71;
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.1);
+}
+
+.option-btn.incorrect {
+  background: rgba(231, 76, 60, 0.15);
+  border-color: rgba(231, 76, 60, 0.6);
+  color: #e74c3c;
+  box-shadow: 0 0 15px rgba(231, 76, 60, 0.1);
+}
+
+/* Progress bar */
+.progress-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-red), var(--color-yellow));
+  border-radius: 3px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Inputs and Forms */
+.input-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input-label {
+  display: block;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.input-field {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-field:focus {
+  border-color: var(--color-orange);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 15px rgba(255, 107, 0, 0.15);
+}
+
+/* Wheel container elements */
+.wheel-outer {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  margin: 0 auto 30px auto;
+  border-radius: 50%;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), var(--shadow-glow);
+  border: 8px solid var(--color-bg-light);
+  background: var(--color-bg-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 40px;
+  z-index: 20;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
+}
+
+.wheel-center-button {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--color-red), var(--color-orange));
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(227, 27, 35, 0.6);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.wheel-center-button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 0 0 25px rgba(227, 27, 35, 0.8);
+}
+
+.wheel-center-button:active {
+  transform: scale(0.95);
+}
+
+/* Custom styled badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-title);
+}
+
+.badge-spice {
+  background: rgba(227, 27, 35, 0.15);
+  border: 1px solid rgba(227, 27, 35, 0.3);
+  color: #ff474f;
+}
+
+.badge-yellow {
+  background: rgba(255, 199, 44, 0.15);
+  border: 1px solid rgba(255, 199, 44, 0.3);
+  color: var(--color-yellow);
+}
+
+/* Receipt Style card */
+.receipt {
+  background: #1c1412;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 20px 0;
+  position: relative;
+  text-align: left;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.receipt-row:last-child {
+  margin-bottom: 0;
+}
+
+.receipt-label {
+  color: var(--color-text-muted);
+}
+
+.receipt-value {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.receipt-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 16px 0;
+}
+
+/* Animations Keyframes */
+@keyframes float-slow {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes float-reverse {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(10px) rotate(-6deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Confetti styles */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Responsive fixes */
+@media (max-width: 400px) {
+  .wheel-outer {
+    width: 280px;
+    height: 280px;
+  }
+  .card {
+    padding: 24px 16px;
+  }
+}
